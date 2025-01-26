@@ -21,21 +21,9 @@ int main() {
         B[i] = i + 11; // Siguiendo imagen guia:  B (11, 12, 13, ...)
     }
 
-    // Imprimimos los arreglos A y B en una sola línea
-    cout << "Arreglo A: ";
-    for (int i = 0; i < N; i++) {
-        cout << A[i] << " ";
-    }
-    cout << endl;
-
-    cout << "Arreglo B: ";
-    for (int i = 0; i < N; i++) {
-        cout << B[i] << " ";
-    }
-    cout << endl;
 
     int main_thread = omp_get_thread_num(); // Obtenemos el ID del hilo principal
-    cout << "Hilo principal " << main_thread << "\n" << endl; 
+    
 
     //OpenMP
     #pragma omp parallel for 
@@ -50,6 +38,21 @@ int main() {
 
         R[i] = A[i] + B[i]; //Suma de los elementos de A y B
     }
+
+    cout << "Hilo principal " << main_thread << "\n" << endl; 
+
+     // Imprimimos los arreglos A y B en una sola línea
+    cout << "Arreglo A: ";
+    for (int i = 0; i < 10; i++) {
+        cout << A[i] << ", ";
+    }
+    cout << endl;
+
+    cout << "Arreglo B: ";
+    for (int i = 0; i < 10; i++) {
+        cout << B[i] << ", ";
+    }
+    cout << endl;
 
     // Imprimimos algunos elementos para verificar la suma
     cout << "\nAlgunos elementos de los arreglos:" << endl;
